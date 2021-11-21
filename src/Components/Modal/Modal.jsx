@@ -1,11 +1,21 @@
 import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
-import { useEffect } from 'react/cjs/react.development';
+import { useEffect } from 'react';
 import { Overlay, ModalWrapper } from './Modal.styled';
 
 const modalRoot = document.querySelector('#modal-root');
 
 export default function Modal({ onClose, children }) {
+  /// /////////// варіант з useCallback():
+  // const handleKeydown = useCallback(
+  //   e => {
+  //     if (e.code === 'Escape') {
+  //       onClose();
+  //     }
+  //   },
+  //   [onClose],
+  // );
+
   useEffect(() => {
     const handleKeydown = e => {
       if (e.code === 'Escape') {
